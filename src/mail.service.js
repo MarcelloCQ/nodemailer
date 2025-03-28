@@ -1,13 +1,7 @@
-import { configMailer } from './mail.config';
-import { callNodeMailer } from './mail.module';
+import nodemailer from 'nodemailer';
+import { configMailer } from './mail.config.js';
 
-export const transporter = callNodeMailer.createTransport(configMailer);
-
-transporter.verify.then(() => {
-  console.log('Ready for send emails');
-});
-
-export const bodyHtml = (name, email, message) => {
+const bodyHtml = (name, email, message) => {
   return `
   <!DOCTYPE html>
 <html lang="en">
@@ -55,4 +49,21 @@ export const bodyHtml = (name, email, message) => {
   </body>
 </html>
 `;
+};
+
+const transporter = nodemailer.createTransport(configMailer);
+
+transporter.verify().then(() => {
+  console.log('Ready for send emails');
+});
+
+export const sendMail = async ({ name, email, message }) => {
+  const info = await transporter.sendMail({
+    from: email,
+    to: 'giosuemc@gmail.com',
+    subject: 'Contacto desde tu web',
+    html: bodyHtml(name, email, message),
+  });
+
+  return info;
 };
