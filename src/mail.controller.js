@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { sendMail } from './mail.service.js';
-import ApiResponse from './apiResponse.js';
+import ApiResponse from './ApiResponse.js';
 
 export const routes = Router();
 
