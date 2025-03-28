@@ -1,9 +1,9 @@
 export const configMailer = {
-  port: 465,
-  host: 'smtp.gmail.com',
+  port: process.env.EMAILPORT,
+  host: process.env.EMAILHOST,
   secure: true,
   auth: {
-    user: 'giosuemc@gmail.com',
-    pass: 'tmpqwdyzhrcxmjpn',
+    user: process.env.EMAIL,
+    pass: process.env.PASS,
   },
 };
