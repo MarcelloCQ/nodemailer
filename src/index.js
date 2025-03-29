@@ -12,6 +12,7 @@ app.use(
       'https://multiple-services-765e6.web.app',
       'https://multiple-services-765e6.firebaseapp.com',
       'http://localhost:3000',
+      'http://38.44.237.152',
     ],
     methods: ['POST', 'OPTIONS'],
     credentials: true,
